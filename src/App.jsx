@@ -64,7 +64,7 @@ function App() {
     setError(null);
     setLoading(false);
 
-    if (x === '') return;
+    if (!x) return;
     const formData = new FormData();
 
     formData.append('file', x);
