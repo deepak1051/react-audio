@@ -64,6 +64,8 @@ function App() {
     setError(null);
     setLoading(false);
 
+    console.log(x);
+
     if (!x) return;
     const formData = new FormData();
 
@@ -79,6 +81,11 @@ function App() {
         'https://api.cloudinary.com/v1_1/dzwub5bux/upload',
         { method: 'post', body: formData }
       );
+
+      if (!response.ok) {
+        throw new Error('Something went wrong...');
+      }
+
       const data = await response.json();
 
       const newAudio = { name: data.original_filename, url: data.url };
